@@ -55,14 +55,19 @@ int main() {
 	string base1 = "woelihnbatmeudoirhdxkj";
 	int orig[] = {2,4,1,7,2,-2,3,1,3,7,-8};
 	func5(base1,22,orig,11,3);
+
 	int orig2[]={2,1,3,2,1,-2,8,-3,9,-1,3};
 	func5(base1,22,orig2,11,5);
 	/*****************************************************/
 	string s4 = "ekvmburwacvxezq_ypotural_ukinvnterzs_powezikrdpvnbjesbsk!";
 	func6(s4, 57, 3, 4);
 	/*****************************************************/
-	char arr5[] = {'a','s','x','j','t','i','h','o','q','e','p','w','v','t','z','m','i','h','y','m','k','d','i','c'};
-	int len = 24;func7(arr5,len,7);
+	//char arr5[] = {'a','s','x','j','t','i','h','o','q','e','p','w','v','t','z','m','i','h','y','m','k','d','i','c'};
+	char exampleArr[] = {'a','b','c','d','e','f','g','h','i','j'};
+	int rot = 4;
+	int len = 10;
+	func7(exampleArr,10,rot);
+	//int len = 24;func7(arr5,len,7);
 	/*****************************************************/
 	string s6 = "xezuhnbl_uiplypdhqlb";
 	len = 20;int arr6[] = {2351,92837,482,65,1039,233,23095,1,2037,693842,283};
@@ -162,15 +167,89 @@ void func4(string s, int len, int startIndex, int areaSize){
 
 }
 
-void func5(string,int,int[],int,int){
+void func5(string s,int len,int orig[],int size,int fsize){
+
+	string newWord;
+
+	int sumArray[size-fsize+1];
+
+	int arrIndex = 0;
+	int sum = 0;
+	for(int i = 0; i < size-fsize+1; i++){
+		for(int j = i, count = 0; count != fsize; j++){
+			sum += orig[j];
+			count++;
+		}
+		sumArray[arrIndex] = sum;
+		sum = 0;
+		arrIndex++;
+	}
+
+	cout << "Arr elements are : " << endl;
+
+	for(int i = 0; i < size-fsize+1; i++){
+		cout << sumArray[i] << ",";
+	}
+	cout << endl;
+
+	for(int i = 0; i < size-fsize+1; i++){
+		newWord += s[sumArray[i]];
+	}
+
+	cout << "The constructed word is : ";
+
+	cout << newWord << endl;
+
 
 }
 
-void func6(string,int,int,int){
+void func6(string s,int len,int x,int y){
+
+	for(int i = 0; i < len; i++){
+		if(i % x == 0){
+			cout << s[i];
+		}
+		else if(i % y == 0){
+			cout << s[i];
+		}
+	}
+	cout << "\n" << endl;
+
 
 }
 
-void func7(char[],int,int){
+void printString(char arr[], int len){
+
+	cout << "---------- PRINTING STRING -----------" << endl;
+	for(int i = 0; i < len; i++){
+		cout << arr[i];
+	}
+	cout << endl;
+
+}
+
+
+void func7(char arr[],int len,int rot){
+
+	for(int i = 0; i < len; i++){
+		int newIndex = i-rot;
+		if(newIndex < 0){
+			newIndex += len;
+		}
+		cout << "new index = " << newIndex << " and i = " << i << endl;
+		char currChar = arr[i];
+		char temp = arr[newIndex];
+		arr[i] = temp;
+		arr[newIndex] = currChar;
+		printString(arr,len);
+	}
+	cout << endl;
+
+
+
+//abcdefghij
+//efghijabcd
+
 
 }
 
