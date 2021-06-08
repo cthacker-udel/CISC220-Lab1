@@ -130,8 +130,35 @@ void func3(string s, int len){
 
 void func4(string s, int len, int startIndex, int areaSize){
 
+	cout << "\nENTERING FUNC4\n" << endl;
 
-	cout << s << endl;
+	char sArr[len+1];
+	for(int i = 0; i < len; i++){
+		sArr[i] = s[i];
+	}
+
+	cout << "\nBefore reversing the pre-determined index and areaSize\n" << endl;
+
+	for(int i = 0; i < len; i++){
+		cout << sArr[i];
+	}
+	cout << "\n" << endl;
+
+	startIndex -= 1;
+	for(int i = startIndex+areaSize, j = startIndex; j != i; j++,i--){
+		char iChar = sArr[i];
+		char jChar = sArr[j];
+		sArr[i] = jChar;
+		sArr[j] = iChar;
+	}
+	cout << "\nAfter reversing the pre-determined index and areaSize\n" << endl;
+
+	for(int i = 0; i < len; i++){
+		cout << sArr[i];
+	}
+
+	cout << "\n\n" << endl;
+
 
 }
 
