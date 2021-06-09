@@ -231,18 +231,28 @@ void printString(char arr[], int len){
 
 void func7(char arr[],int len,int rot){
 
+	char newArr[len];
+	for(int i = 0; i < len; i++){
+		newArr[i] = arr[i];
+	}
+
 	for(int i = 0; i < len; i++){
 		int newIndex = i-rot;
 		if(newIndex < 0){
 			newIndex += len;
 		}
-		cout << "new index = " << newIndex << " and i = " << i << endl;
-		char currChar = arr[i];
-		char temp = arr[newIndex];
-		arr[i] = temp;
+		//cout << "\n####\nBEFORE\n####\n" << endl;
+		//printString(arr,len);
+		char currChar = newArr[i];
+		//char temp = arr[newIndex];
+		//arr[i] = temp;
+		//arr[newIndex] = currChar;
 		arr[newIndex] = currChar;
-		printString(arr,len);
+		//cout << "\nnew index = " << newIndex << " and i = " << i << endl;
+		//cout << "\n####\nAFTER\n####\n" << endl;
+		//printString(arr,len);
 	}
+	printString(arr,len);
 	cout << endl;
 
 
@@ -253,28 +263,133 @@ void func7(char arr[],int len,int rot){
 
 }
 
-void func8(string,int,int[],int){
+void func8(string s,int len,int numArr[],int lenNums){
+
+
+	string newWord;
+	for(int i = 0; i < lenNums; i++){
+
+		int sum = 0;
+		int theNumber = numArr[i];
+		while(theNumber > 9){
+			sum += theNumber % 10;
+			theNumber = theNumber / 10;
+		}
+		sum += theNumber;
+		int index = sum % len;
+		newWord += s[index];
+		sum = 0;
+	}
+
+	cout << "The new string = " << newWord << endl;
+
 
 }
 
-void func9(string,int,int){
+void func9(string s7,int len,int msize){
+
+	char matrix[msize][msize];
+
+	int index = 0;
+	for(int i = 0; i < msize; i++){
+		for(int j = 0; j < msize; j++){
+			matrix[i][j] = s7[index];
+			index++;
+		}
+	}
+
+	//[0][3],[1][2],[2][1],[3][0]
+
+    for(int i = 0; i < msize; i++){
+    	cout << matrix[i][i];
+    }
+    cout << endl;
+
 
 }
 
-void func10(string,int,int){
+void func10(string s,int len,int msize){
+
+	char matrix[msize][msize];
+
+	int index = 0;
+	for(int i = 0; i < msize; i++){
+		for(int j = 0; j < msize; j++){
+			matrix[i][j] = s[index];
+			index++;
+		}
+	}
+
+
+	for(int i = 0; i < msize; i++){
+			for(int j = 0; j < msize; j++){
+				cout << matrix[i][j];
+			}
+			cout << endl;
+		}
+
+	cout << endl;
+
+	int diagIndex = msize-1;
+	for(int i = 0; i < msize; i++){
+		cout << matrix[i][diagIndex];
+		diagIndex--;
+	}
+	cout << endl;
 
 }
 
-void func11(string,int,int){
+void func11(string s,int len,int msize){
+
+	char matrix[msize][msize];
+
+	int index = 0;
+	for(int i = 0; i < msize; i++){
+		for(int j = 0; j < msize; j++){
+			matrix[i][j] = s[index];
+			index++;
+		}
+	}
+
+	//[0][0],[1][0],[2][0]
+
+	for(int i = 0; i < msize; i++){
+
+		for(int j = 0; j < msize; j++){
+
+			cout << matrix[j][i];
+
+		}
+	}
+	cout << endl;
+
 
 }
 
-bool func12a(string,int,char,int){
-	return true;
+bool func12a(string s,int len,char c,int ind){
+
+	if(s[ind] == c){
+		return true;
+	}
+	else if(ind == len){
+		return false;
+	}
+	else{
+		return func12a(s,len,c,ind+1);
+	}
 }
 
-void func12b(string,int,string,int,int){
-	return;
+void func12b(string s,int len,string s2,int len2,int ind){
+	for(int i = 0; i < len; i++){
+		char currChar = s[i];
+		if(func12a(s2,len2,currChar,0)){
+			continue;
+		}
+		else{
+			cout << currChar;
+		}
+	}
+	cout << endl;
 }
 
 
