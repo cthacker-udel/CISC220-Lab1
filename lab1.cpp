@@ -231,35 +231,16 @@ void printString(char arr[], int len){
 
 void func7(char arr[],int len,int rot){
 
-	char newArr[len];
-	for(int i = 0; i < len; i++){
-		newArr[i] = arr[i];
-	}
+	// will get points off for creating a new array, try to strip the first character, and then rotate all the elements left by one, then plop the first element onto the end of the string
 
-	for(int i = 0; i < len; i++){
-		int newIndex = i-rot;
-		if(newIndex < 0){
-			newIndex += len;
+	for(int i = 0; i < rot; i++){
+		char firstChar = arr[0];
+		for(int i = 1; i < len; i++){
+			arr[i-1] = arr[i];
 		}
-		//cout << "\n####\nBEFORE\n####\n" << endl;
-		//printString(arr,len);
-		char currChar = newArr[i];
-		//char temp = arr[newIndex];
-		//arr[i] = temp;
-		//arr[newIndex] = currChar;
-		arr[newIndex] = currChar;
-		//cout << "\nnew index = " << newIndex << " and i = " << i << endl;
-		//cout << "\n####\nAFTER\n####\n" << endl;
-		//printString(arr,len);
+		arr[len-1] = firstChar;
+		printString(arr,len);
 	}
-	printString(arr,len);
-	cout << endl;
-
-
-
-//abcdefghij
-//efghijabcd
-
 
 }
 
@@ -297,8 +278,6 @@ void func9(string s7,int len,int msize){
 			index++;
 		}
 	}
-
-	//[0][3],[1][2],[2][1],[3][0]
 
     for(int i = 0; i < msize; i++){
     	cout << matrix[i][i];
@@ -350,8 +329,6 @@ void func11(string s,int len,int msize){
 			index++;
 		}
 	}
-
-	//[0][0],[1][0],[2][0]
 
 	for(int i = 0; i < msize; i++){
 
