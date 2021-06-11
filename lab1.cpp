@@ -113,13 +113,29 @@ void func1(string s, int ct){
 
 void func2(string s, int len){
 
-	for(int i = 0; i < len; i++){
-		cout << s.at(i) << endl;
+	/*
+	 *
+	 * Does the 'every other character', imply that we print out one character(the first), then skip the next,
+	 * and then print out the one after the skipped, and so on
+	 *
+	 */
+
+	int i = 0;
+	while(i < len){
+		cout << s.at(i);
+		i += 2;
 	}
 
 }
 
 void func3(string s, int len){
+
+	/*
+	 *
+	 * Does the 'every other character', imply that we print out one character(the first), then skip the next,
+	 * and then print out the one after the skipped, and so on
+	 *
+	 */
 
 	char letters[len+1];
 
@@ -127,38 +143,41 @@ void func3(string s, int len){
 		letters[i] = s.at(i);
 	}
 
-	for(int i = len; i >= 0; i--){
-		cout << letters[i] << endl;
+	for(int i = len+1; i >= 0; i -= 2){
+		cout << letters[i];
 	}
 
 }
 
 void func4(string s, int len, int startIndex, int areaSize){
 
-	cout << "\nENTERING FUNC4\n" << endl;
+	cout << endl;
+
+
+	//cout << "\nENTERING FUNC4\n" << endl;
 
 	char sArr[len+1];
 	for(int i = 0; i < len; i++){
 		sArr[i] = s[i];
 	}
 
-	cout << "\nBefore reversing the pre-determined index and areaSize\n" << endl;
+	//cout << "\nBefore reversing the pre-determined index and areaSize\n" << endl;
 
-	for(int i = 0; i < len; i++){
-		cout << sArr[i];
-	}
-	cout << "\n" << endl;
+	//for(int i = 0; i < len; i++){
+	//	cout << sArr[i];
+	//}
+	//cout << "\n" << endl;
 
-	startIndex -= 1;
-	for(int i = startIndex+areaSize, j = startIndex; j != i; j++,i--){
+	//startIndex -= 1;
+	for(int i = startIndex+areaSize-1, j = startIndex; j <= i; j++,i--){
 		char iChar = sArr[i];
 		char jChar = sArr[j];
 		sArr[i] = jChar;
 		sArr[j] = iChar;
 	}
-	cout << "\nAfter reversing the pre-determined index and areaSize\n" << endl;
+	//cout << "\nAfter reversing the pre-determined index and areaSize\n" << endl;
 
-	for(int i = 0; i < len; i++){
+	for(int i = 0; i < len; i += 2){
 		cout << sArr[i];
 	}
 
@@ -241,6 +260,7 @@ void func7(char arr[],int len,int rot){
 		arr[len-1] = firstChar;
 		printString(arr,len);
 	}
+	cout << endl;
 
 }
 
@@ -269,6 +289,8 @@ void func8(string s,int len,int numArr[],int lenNums){
 
 void func9(string s7,int len,int msize){
 
+	cout << "entering func9" << endl;
+
 	char matrix[msize][msize];
 
 	int index = 0;
@@ -289,6 +311,8 @@ void func9(string s7,int len,int msize){
 
 void func10(string s,int len,int msize){
 
+	cout << "entering func10" << endl;
+
 	char matrix[msize][msize];
 
 	int index = 0;
@@ -300,14 +324,14 @@ void func10(string s,int len,int msize){
 	}
 
 
-	for(int i = 0; i < msize; i++){
-			for(int j = 0; j < msize; j++){
-				cout << matrix[i][j];
-			}
-			cout << endl;
-		}
+	//for(int i = 0; i < msize; i++){
+	//		for(int j = 0; j < msize; j++){
+	//			cout << matrix[i][j];
+	//		}
+	//		cout << endl;
+	//	}
 
-	cout << endl;
+	//cout << endl;
 
 	int diagIndex = msize-1;
 	for(int i = 0; i < msize; i++){
@@ -319,6 +343,8 @@ void func10(string s,int len,int msize){
 }
 
 void func11(string s,int len,int msize){
+
+	cout << "Entering func11" << endl;
 
 	char matrix[msize][msize];
 
